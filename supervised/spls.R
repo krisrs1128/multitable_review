@@ -105,14 +105,14 @@ ggplot(mbeta) +
     fill = "transparent", size = 2,
     xmin = -Inf, xmax = Inf, ymin = -Inf, ymax = Inf
   ) +
+  guides(
+    color = guide_legend(title = "Family", nrow = 4)
+  ) +
   scale_fill_gradient2(
     "Coef. ",
     guide = guide_colorbar(ticks = FALSE, barheight = 0.9),
     low = "#40004b",
     high = "#00441b"
-  ) +
-  guides(
-    color = guide_legend(nrow = 4)
   ) +
   scale_x_discrete("Genus", expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
@@ -125,8 +125,8 @@ ggplot(mbeta) +
   )
 
 ggsave(
-  "../chapter/figure/spls/coef_heatmap.png",
-  width = 5.9,
+  "../chapter/figure/spls/coef_heatmap.pdf",
+  width = 6.3,
   height = 4.1
 )
 
@@ -173,7 +173,7 @@ ggplot(mlarge_species) +
   theme(legend.position = "bottom")
 
 ggsave(
-  "../chapter/figure/spls/gynoid_fm_species.png",
+  "../chapter/figure/spls/gynoid_fm_species.pdf",
   width = 7.4,
   height = 6.3
 )
@@ -199,10 +199,15 @@ ggplot(mlarge_species) +
     size = 0.7, alpha = 0.8
   ) +
   facet_wrap(~seq_num, ncol = 6) +
+  labs(
+    x = "Abundance",
+    y = "Android Fat Mass",
+    col = "Family"
+  ) +
   theme(legend.position = "bottom")
 
 ggsave(
-  "../chapter/figure/spls/android_fm_species.png",
+  "../chapter/figure/spls/android_fm_species.pdf",
   width = 7.4,
   height = 6.3
 )

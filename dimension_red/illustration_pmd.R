@@ -193,5 +193,5 @@ plot_simulation(mW, pmd_res)
 ###############################################################################
 pmd_res <- MultiCCA(lapply(X, t), ncomponents = 2, type = "ordered")
 p <- plot_simulation(mW, pmd_res)
-ggsave("../chapter/figure/pmd/illustration_sequence.png", p[[1]], width = 5, height = 3)
-ggsave("../chapter/figure/pmd/illustration_scatter.png", p[[2]], width = 5, height = 3)
+ggsave("../chapter/figure/pmd/illustration_sequence.pdf", p[[1]], width = 5, height = 3)
+ggsave("../chapter/figure/pmd/illustration_scatter.pdf", p[[2]], width = 5, height = 3)

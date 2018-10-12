@@ -30,7 +30,7 @@ lda_cca_plots <- function(mdist, seq_fam, processed, opts) {
     labs(x = "Axis 1", y = "Axis 2", col = "android_fm")
 
   ggsave(
-    sprintf("%s/shared_scores_fm_posterior.png", opts$outdir),
+    sprintf("%s/shared_scores_fm_posterior.pdf", opts$outdir),
     width = 5.63, height = 3.42
   )
 
@@ -52,7 +52,7 @@ lda_cca_plots <- function(mdist, seq_fam, processed, opts) {
     scv +
     labs(x = "Axis 1", y = "Axis 2", col = "Android FM")
   ggsave(
-    sprintf("%s/unshared_scores_fm_posterior.png", opts$outdir),
+    sprintf("%s/unshared_scores_fm_posterior.pdf", opts$outdir),
     width = 9.24,
     height = 2.5
   )
@@ -90,7 +90,7 @@ lda_cca_plots <- function(mdist, seq_fam, processed, opts) {
       legend.position = "bottom"
     )
   ggsave(
-    sprintf("%s/within_loadings_seq_boxplots.png", opts$outdir),
+    sprintf("%s/within_loadings_seq_boxplots.pdf", opts$outdir),
     width = 7.45,
     height = 3.37
   )
@@ -127,7 +127,7 @@ lda_cca_plots <- function(mdist, seq_fam, processed, opts) {
       legend.position = "bottom"
     )
   ggsave(
-    sprintf("%s/between_loadings_seq_boxplots.png", opts$outdir),
+    sprintf("%s/between_loadings_seq_boxplots.pdf", opts$outdir),
     width = 7.45,
     height = 3.37
   )
@@ -155,7 +155,7 @@ lda_cca_plots <- function(mdist, seq_fam, processed, opts) {
     theme(axis.text.x = element_text(angle = -90))
 
   ggsave(
-    sprintf("%s/within_loadings_body_comp_boxplots.png", opts$outdir),
+    sprintf("%s/within_loadings_body_comp_boxplots.pdf", opts$outdir),
     width = 6.44,
     height = 3.95
   )
@@ -178,7 +178,7 @@ lda_cca_plots <- function(mdist, seq_fam, processed, opts) {
     theme(axis.text.x = element_text(angle = -90))
 
   ggsave(
-    sprintf("%s/between_loadings_body_comp_boxplots.png", opts$outdir),
+    sprintf("%s/between_loadings_body_comp_boxplots.pdf", opts$outdir),
     width = 6.44,
     height = 3.95
   )
