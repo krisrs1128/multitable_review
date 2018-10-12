@@ -45,7 +45,7 @@ merge_process_opts <- function(opts = list()) {
 #'         microbiome study.
 #'    (4) bc_full: The body composition data across all participants in the
 #'         study.
-read_data <- function(simulate=TRUE, data_dir = "../data/") {
+read_data <- function(simulate=FALSE, data_dir = "../data/") {
   if (simulate) {
     return (get(load(file.path(data_dir, "sim.rda"))))
   }
