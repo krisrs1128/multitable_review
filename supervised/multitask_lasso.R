@@ -142,7 +142,7 @@ ggplot(mbeta) +
   )
 
 ggsave(
-  "../chapter/figure/graph_lasso/multitask_lasso_hm_lambdas.png",
+  "../chapter/figure/graph_lasso/multitask_lasso_hm_lambdas.pdf",
   width = 9.5,
   height = 6.5
 )
@@ -180,7 +180,7 @@ ggplot(mbeta_sub) +
   )
 
 ggsave(
-  "../chapter/figure/graph_lasso/multitask_lasso_hm.png",
+  "../chapter/figure/graph_lasso/multitask_lasso_hm.pdf",
   width = 5.9,
   height = 4.1
 )

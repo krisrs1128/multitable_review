@@ -84,7 +84,7 @@ plot_scores(cc_scores, "android_fm", "Android FM", cca_res$CCA$eig) +
   scale_color_viridis(
     guide = guide_colorbar(barheight = 0.15, ticks = FALSE)
   )
-ggsave("../chapter/figure/ccpna/scores_total_lm.png", width = 5.47, height = 3.19)
+ggsave("../chapter/figure/ccpna/scores_total_lm.pdf", width = 5.47, height = 3.19)
 
 loadings <- prepare_loadings(
   list(4 * cca_res$CCA$biplot, cca_res$CCA$v),
@@ -93,4 +93,4 @@ loadings <- prepare_loadings(
   left_join(seq_fam)
 plot_loadings(loadings, cca_res$CCA$eig, c(-8, 4)) +
   scale_size_continuous(range = c(0.1, 3))
-ggsave("../chapter/figure/ccpna/loadings.png", width = 9.81, height = 4.62)
+ggsave("../chapter/figure/ccpna/loadings.pdf", width = 9.81, height = 4.62)
