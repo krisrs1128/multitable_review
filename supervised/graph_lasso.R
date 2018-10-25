@@ -150,7 +150,7 @@ ggplot(mbeta) +
     guide = guide_colorbar(ticks = FALSE, barheight = 0.9),
     mid = "#F8F8F8", low = "#40004b", high = "#00441b"
   ) +
-  scale_colour_discrete(values = species_cols) +
+  scale_colour_discrete() +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   facet_grid(. ~ family, scale = "free", space = "free") +
