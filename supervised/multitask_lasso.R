@@ -18,16 +18,42 @@ source("../dimension_red/prep_tables.R")
 source("../dimension_red/plot.R")
 
 ## cleaner ggplot theme
-scale_colour_discrete <- function(...)
+scale_colour_discrete <- function(...) {
+  species_vals <- c(
+    "Prevotellaceae" = "#a6cee3",
+    "Bacteroidaceae" = "#1f78b4",
+    "Veillonellaceae" = "#b2df8a",
+    "Ruminococcaceae" = "#33a02c",
+    "Other" = "#fb9a99",
+    "Lachnospiraceae" = "#e31a1c",
+    "Coriobacteriaceae" = "#fdbf6f",
+    "Clostridiaceae_1" = "#ff7f00",
+    "Erysipelotrichaceae" = "#cab2d6",
+    "Porphyromonadaceae" = "#ffc100"
+  )
   scale_color_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6', "#ffc100"),
+    species_vals,
     na.value = "#464646"
   )
-scale_fill_discrete <- function(...)
+}
+scale_fill_discrete <- function(...) {
+  species_vals <- c(
+    "Prevotellaceae" = "#a6cee3",
+    "Bacteroidaceae" = "#1f78b4",
+    "Veillonellaceae" = "#b2df8a",
+    "Ruminococcaceae" = "#33a02c",
+    "Other" = "#fb9a99",
+    "Lachnospiraceae" = "#e31a1c",
+    "Coriobacteriaceae" = "#fdbf6f",
+    "Clostridiaceae_1" = "#ff7f00",
+    "Erysipelotrichaceae" = "#cab2d6",
+    "Porphyromonadaceae" = "#ffc100"
+  )
   scale_fill_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6',"#ffc100"),
+    species_vals,
     na.value = "#464646"
   )
+}
 
 theme_set(theme_bw())
 theme_update(

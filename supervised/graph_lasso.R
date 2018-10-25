@@ -19,16 +19,42 @@ library("gflasso")
 library("glasso")
 
 ## cleaner ggplot theme
-scale_colour_discrete <- function(...)
+scale_colour_discrete <- function(...) {
+  species_vals <- c(
+    "Prevotellaceae" = "#a6cee3",
+    "Bacteroidaceae" = "#1f78b4",
+    "Veillonellaceae" = "#b2df8a",
+    "Ruminococcaceae" = "#33a02c",
+    "Other" = "#fb9a99",
+    "Lachnospiraceae" = "#e31a1c",
+    "Coriobacteriaceae" = "#fdbf6f",
+    "Clostridiaceae_1" = "#ff7f00",
+    "Erysipelotrichaceae" = "#cab2d6",
+    "Porphyromonadaceae" = "#ffc100"
+  )
   scale_color_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6', "#ffc100"),
+    species_vals,
     na.value = "#464646"
   )
-scale_fill_discrete <- function(...)
+}
+scale_fill_discrete <- function(...) {
+  species_vals <- c(
+    "Prevotellaceae" = "#a6cee3",
+    "Bacteroidaceae" = "#1f78b4",
+    "Veillonellaceae" = "#b2df8a",
+    "Ruminococcaceae" = "#33a02c",
+    "Other" = "#fb9a99",
+    "Lachnospiraceae" = "#e31a1c",
+    "Coriobacteriaceae" = "#fdbf6f",
+    "Clostridiaceae_1" = "#ff7f00",
+    "Erysipelotrichaceae" = "#cab2d6",
+    "Porphyromonadaceae" = "#ffc100"
+  )
   scale_fill_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6',"#ffc100"),
+    species_vals,
     na.value = "#464646"
   )
+}
 
 theme_set(theme_bw())
 theme_update(
@@ -124,7 +150,7 @@ ggplot(mbeta) +
     guide = guide_colorbar(ticks = FALSE, barheight = 0.9),
     mid = "#F8F8F8", low = "#40004b", high = "#00441b"
   ) +
-  scale_colour_discrete() +
+  scale_colour_discrete(values = species_cols) +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   facet_grid(. ~ family, scale = "free", space = "free") +
