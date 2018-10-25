@@ -45,7 +45,7 @@ merge_process_opts <- function(opts = list()) {
 #'         microbiome study.
 #'    (4) bc_full: The body composition data across all participants in the
 #'         study.
-read_data <- function(simulate=TRUE, data_dir = "../data/") {
+read_data <- function(simulate=FALSE, data_dir = "../data/") {
   if (simulate) {
     return (get(load(file.path(data_dir, "sim.rda"))))
   }
@@ -192,9 +192,10 @@ prepare_taxa <- function(taxa) {
       family = fct_lump(Family, n = 9, ties.method = "first")
     )
   taxa[is.na(taxa[, "family"]), "family"] <- "Other"
+  fam_levels <- setdiff(names(sort(table(taxa$family), decreasing = TRUE)), "Other")
   taxa$family <- factor(
     taxa$family,
-    levels = names(sort(table(taxa$family), decreasing = TRUE))
+    levels = c(fam_levels, "Other")
   )
   taxa <- tax_table(as.matrix(taxa))
   taxa_names(taxa) <- taxa[, "seq_num"]

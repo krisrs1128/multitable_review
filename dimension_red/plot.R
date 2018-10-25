@@ -153,6 +153,8 @@ plot_loadings <- function(loadings,
       range = c(0.2, 2),
       breaks = size_breaks
     ) +
+    colour_discrete() +
+    fill_discrete() +
     guides(col=guide_legend(keyheight=0.1, default.unit="inch"),
            size=guide_legend(keyheight=0.1, default.unit="inch")) +
     coord_fixed(sqrt(eigs[plot_dims[2]] / eigs[plot_dims[1]]))
@@ -252,5 +254,45 @@ mass_ordering <- function() {
     site_ordered[!grepl("fm|lm", site_ordered)],
     site_ordered[grepl("fm", site_ordered)],
     site_ordered[grepl("lm", site_ordered)]
+  )
+}
+
+colour_discrete <- function(...) {
+  species_vals <- c(
+    "Prevotellaceae" = "#a6cee3",
+    "Bacteroidaceae" = "#1f78b4",
+    "Veillonellaceae" = "#b2df8a",
+    "Ruminococcaceae" = "#33a02c",
+    "Lachnospiraceae" = "#e31a1c",
+    "Coriobacteriaceae" = "#fdbf6f",
+    "Clostridiaceae_1" = "#ff7f00",
+    "Erysipelotrichaceae" = "#cab2d6",
+    "Porphyromonadaceae" = "#ffc100",
+    "Other" = "#8b8b8b"
+  )
+  scale_color_manual(
+    values = species_vals,
+    na.value = "#464646",
+    ...
+  )
+}
+
+fill_discrete <- function(...) {
+  species_vals <- c(
+    "Prevotellaceae" = "#a6cee3",
+    "Bacteroidaceae" = "#1f78b4",
+    "Veillonellaceae" = "#b2df8a",
+    "Ruminococcaceae" = "#33a02c",
+    "Lachnospiraceae" = "#e31a1c",
+    "Coriobacteriaceae" = "#fdbf6f",
+    "Clostridiaceae_1" = "#ff7f00",
+    "Erysipelotrichaceae" = "#cab2d6",
+    "Porphyromonadaceae" = "#ffc100",
+    "Other" = "#8b8b8b"
+  )
+  scale_fill_manual(
+    values = species_vals,
+    na.value = "#464646",
+    ...
   )
 }

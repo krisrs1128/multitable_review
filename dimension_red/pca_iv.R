@@ -18,17 +18,8 @@ source("prep_tables.R")
 source("plot.R")
 
 ## cleaner ggplot theme
-scale_colour_discrete <- function(...)
-  scale_color_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6', "#464646"),
-    na.value = "black"
-  )
-scale_fill_discrete <- function(...)
-  scale_fill_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6', "#464646"),
-    na.value = "black"
-  )
-
+scale_colour_discrete <- colour_discrete
+scale_fill_discrete <- fill_discrete
 theme_set(theme_bw())
 theme_update(
   panel.background = element_rect(fill = "#F8F8F8"),
@@ -105,7 +96,7 @@ mscores <- melt_scores(scores)
 plot_scores(scores, "android_fm", "Android FM", pcaiv_res$eig) +
   link_scores(mscores) +
   scale_color_viridis(
-    guide = guide_colorbar(barheight = 0.15, ticks = FALSE)
+    guide = guide_colorbar(barheight = 3, barwidth = 0.15, ticks = FALSE)
   )
 ggsave("../chapter/figure/pca_iv/scores_android_fm.png", width = 3.56, height = 1.8)
 
@@ -114,6 +105,6 @@ scores <- scores %>%
 plot_scores(scores, "rl_ratio", "tanh(Bact. - Rumino.)", pcaiv_res$eig) +
   link_scores(mscores) +
   scale_color_viridis(
-    guide = guide_colorbar(barheight = 0.15, ticks = FALSE)
+    guide = guide_colorbar(barheight = 3, barwidth = 0.15, ticks = FALSE)
   )
 ggsave("../chapter/figure/pca_iv/scores_rl_ratio.png", width = 3.56, height = 1.8)
