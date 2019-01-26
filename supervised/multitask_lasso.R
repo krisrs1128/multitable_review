@@ -18,17 +18,8 @@ source("../dimension_red/prep_tables.R")
 source("../dimension_red/plot.R")
 
 ## cleaner ggplot theme
-scale_colour_discrete <- function(...)
-  scale_color_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6', "#ffc100"),
-    na.value = "#464646"
-  )
-scale_fill_discrete <- function(...)
-  scale_fill_manual(
-    values = c('#a6cee3','#1f78b4','#b2df8a','#33a02c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6',"#ffc100"),
-    na.value = "#464646"
-  )
-
+scale_colour_discrete <- colour_discrete
+scale_fill_discrete <- fill_discrete
 theme_set(theme_bw())
 theme_update(
   panel.background = element_rect(fill = "#F8F8F8"),

@@ -20,6 +20,9 @@ Rscript illustration.R
 Rscript illustration_pmd.R
 
 cd ../supervised/
+Rscript graph_lasso.R
+Rscript multitask_lasso.R
+Rscript spls.R
 Rscript spls.R
 Rscript graph_lasso.R
 Rscript multitask_lasso.R

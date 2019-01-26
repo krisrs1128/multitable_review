@@ -192,9 +192,10 @@ prepare_taxa <- function(taxa) {
       family = fct_lump(Family, n = 9, ties.method = "first")
     )
   taxa[is.na(taxa[, "family"]), "family"] <- "Other"
+  fam_levels <- setdiff(names(sort(table(taxa$family), decreasing = TRUE)), "Other")
   taxa$family <- factor(
     taxa$family,
-    levels = names(sort(table(taxa$family), decreasing = TRUE))
+    levels = c(fam_levels, "Other")
   )
   taxa <- tax_table(as.matrix(taxa))
   taxa_names(taxa) <- taxa[, "seq_num"]
