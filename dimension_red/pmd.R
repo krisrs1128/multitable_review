@@ -65,7 +65,7 @@ plot_scores(scores, "android_fm", "android fm", cca_res$d, c(-3, 3)) +
   scale_color_viridis(
     guide = guide_colorbar(barheight = 3, barwidth = 0.15, ticks = FALSE)
   )
-ggsave("../chapter/figure/pmd/scores_android_fm.png", width = 4.4, height = 3.1)
+ggsave("../chapter/figure/pmd/scores_android_fm.pdf", width = 4.4, height = 3.1)
 
 ## color by ruminoccocus / lachnospiraceae ratios
 scores <- scores %>%
@@ -108,7 +108,7 @@ plot_loadings(
     ),
     size = 1.5
   ) +
-ggsave("../chapter/figure/pmd/loadings.png", width = 4.5, height = 3.3)
+ggsave("../chapter/figure/pmd/loadings.pdf", width = 4.5, height = 3.3)
 
 mlarge_species <- melt(
   data.frame(
@@ -142,12 +142,17 @@ ggplot(mlarge_species) +
     size = 0.7, alpha = 0.8
   ) +
   facet_wrap(~seq_num, ncol = 8) +
+  labs(
+    x = "Abundance",
+    y = "Android Fat Mass",
+    col = "Family"
+  ) +
   theme(
     legend.position = "bottom"
   )
 
 ggsave(
-  "../chapter/figure/pmd/android_fm_species.png",
+  "../chapter/figure/pmd/android_fm_species.pdf",
   width = 7.06,
   height = 4.41
 )

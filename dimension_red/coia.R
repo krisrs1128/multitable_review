@@ -74,7 +74,7 @@ plot_loadings(loadings, coia_res$eig) +
   ylim(-0.6, 0.5) +
   xlim(-0.45, 0.35) +
   scale_size_continuous(range = c(0, 3), breaks = c(-8, -8))
-ggsave(file.path(out_path, "loadings.png"), width = 4.56, height = 3.3)
+ggsave(file.path(out_path, "loadings.pdf"), width = 4.56, height = 3.3)
 
 scores <- prepare_scores(
   list(coia_res$lX, coia_res$lY),
@@ -89,7 +89,7 @@ mscores <- melt_scores(scores)
 plot_scores(scores, "type", "Meas. Type", coia_res$eig) +
   link_scores(mscores) +
   scale_color_brewer(palette = "Set1")
-ggsave(file.path(out_path, "scores_linked.png"), width = 4.7, height = 1.7)
+ggsave(file.path(out_path, "scores_linked.pdf"), width = 4.7, height = 1.7)
 
 plot_scores(scores, "android_fm", "Android FM", coia_res$eig) +
   link_scores(mscores) +
@@ -97,7 +97,7 @@ plot_scores(scores, "android_fm", "Android FM", coia_res$eig) +
     "Android FM ",
     guide = guide_colorbar(barheight = 3, barwidth = 0.15, ticks = FALSE)
   )
-ggsave(file.path(out_path, "scores_android_fm.png"), width = 4.7, height = 2.7)
+ggsave(file.path(out_path, "scores_android_fm.pdf"), width = 4.7, height = 2.7)
 
 scores <- scores %>%
   left_join(family_means(processed$mseqtab))
@@ -107,4 +107,4 @@ plot_scores(scores, "rl_ratio", "tanh(Bact. - Rumino.)", coia_res$eig) +
     "Bact. / Rumino.",
     guide = guide_colorbar(barheight = 3, barwidth = 0.15, ticks = FALSE)
   )
-ggsave(file.path(out_path, "scores_rl_ratio.png"), width = 4.7, height = 2.7)
+ggsave(file.path(out_path, "scores_rl_ratio.pdf"), width = 4.7, height = 2.7)

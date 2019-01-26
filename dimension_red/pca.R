@@ -71,7 +71,7 @@ loadings <- prepare_loadings(loadings_list, c("body_comp", "seq")) %>%
   left_join(seq_fam)
 
 plot_loadings(loadings, pc_res$sdev)
-ggsave("../chapter/figure/pca/loadings.png", width = 5.69, height = 3.9)
+ggsave("../chapter/figure/pca/loadings.pdf", width = 5.69, height = 3.9)
 
 ## and study the scores
 plot_scores(scores, "android_lm", "Android FM", pc_res$sdev, size_breaks=c(-6, 6)) +
@@ -79,7 +79,7 @@ plot_scores(scores, "android_lm", "Android FM", pc_res$sdev, size_breaks=c(-6, 6
     "Android FM ",
     guide = guide_colorbar(barheight = 3, barwidth = 0.15, ticks = FALSE)
   )
-ggsave("../chapter/figure/pca/scores_android_fm.png", width = 4.45, height = 2)
+ggsave("../chapter/figure/pca/scores_android_fm.pdf", width = 4.45, height = 2)
 
 ##  also study scores in relation to overall bacteroides / ruminoccocus ratio
 scores <- scores %>%
@@ -88,4 +88,4 @@ plot_scores(scores, "rl_ratio", "tanh(Bact. - Rumino.)", pc_res$sdev) +
   scale_color_viridis(
     guide = guide_colorbar(barheight = 3, barwidth = 0.15, ticks = FALSE)
   )
-ggsave("../chapter/figure/pca/scores_rl_ratio.png", width = 3.56, height = 2.6)
+ggsave("../chapter/figure/pca/scores_rl_ratio.pdf", width = 3.56, height = 2.6)

@@ -84,7 +84,7 @@ ggscaffold::ggheatmap(mR) +
     legend.position = "bottom"
   )
 ggsave(
-  "../chapter/figure/graph_lasso/graph.png",
+  "../chapter/figure/graph_lasso/graph.pdf",
   width = 3.17,
   height = 3.07
 )
@@ -119,7 +119,7 @@ ggplot(mbeta) +
   scale_x_discrete(expand = c(0, 0)) +
   scale_y_discrete(expand = c(0, 0)) +
   facet_grid(. ~ family, scale = "free", space = "free") +
-  guides(color = guide_legend(nrow = 4)) +
+  guides(color = guide_legend("Family", nrow = 4)) +
   theme(
     axis.text.x = element_blank(),
     panel.border = element_blank(),
@@ -129,7 +129,7 @@ ggplot(mbeta) +
   )
 
 ggsave(
-  "../chapter/figure/graph_lasso/coef_heatmap.png",
+  "../chapter/figure/graph_lasso/coef_heatmap.pdf",
   width = 5.9,
   height = 4.1
 )

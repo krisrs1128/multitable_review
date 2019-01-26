@@ -69,17 +69,17 @@ bc_sub <- bc[, c("weight_dxa", "Total_FM")]
 pc_x <- prcomp(bc_sub)
 proj_x <- project(bc_sub, pc_x, 1)
 proj_plot(bc_sub, proj_x)
-ggsave("../chapter/figure/pca/proj_plot_1.png", width = 3, height = 3)
+ggsave("../chapter/figure/pca/proj_plot_1.pdf", width = 3, height = 3)
 
 pc_x <- prcomp(bc)
 proj_x <- project(bc, pc_x, 2)
 proj_plot(bc, proj_x)
-ggsave("../chapter/figure/pca/proj_plot_2.png", width = 3, height = 3)
+ggsave("../chapter/figure/pca/proj_plot_2.pdf", width = 3, height = 3)
 
 pc_x <- prcomp(bc)
 proj_x <- project(bc, pc_x, 1)
 proj_plot(bc, proj_x)
-ggsave("../chapter/figure/pca/proj_plot_3.png", width = 3, height = 3)
+ggsave("../chapter/figure/pca/proj_plot_3.pdf", width = 3, height = 3)
 
 ###############################################################################
 ## maximum variance interpretation
@@ -108,4 +108,4 @@ ggplot(contrasts) +
   ) +
   scale_y_continuous(expand = c(0, 0)) +
   facet_grid(var ~ .)
-ggsave("../chapter/figure/pca/var_plot.png", width = 4, height = 3)
+ggsave("../chapter/figure/pca/var_plot.pdf", width = 4, height = 3)
