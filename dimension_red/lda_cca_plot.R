@@ -142,44 +142,57 @@ lda_cca_plots <- function(mdist, seq_fam, processed, opts) {
     levels = mass_ordering()
   )
 
-  ggplot(mdist$Wy) +
-    geom_hline(yintercept = 0, alpha = 0.4) +
-    geom_boxplot(
-      aes(
-        x = variable,
-        y = value
-      ),
-      outlier.size = 1
-    ) +
-    facet_grid(col ~ .) +
-    theme(axis.text.x = element_text(angle = -90))
-
-  ggsave(
-    sprintf("%s/within_loadings_body_comp_boxplots.pdf", opts$outdir),
-    width = 6.44,
-    height = 3.95
-  )
-
   mdist$By$variable <- factor(
     bc_names[mdist$By$row],
     levels = mass_ordering()
   )
 
-  ggplot(mdist$By) +
+  var_levs <- unique(mdist$By$variable)
+  mass_type <- c(rep("Neither", 5), rep("Fat Mass", 15), rep("Lean Mass", 12), rep("Neither", 2))
+  side_mass <- rep("Overall", 34)
+  side_mass[grepl("leg", var_levs)] <- "Leg"
+  side_mass[grepl("arm", var_levs)] <- "Arm"
+  side_mass[grepl("trunk", var_levs)] <- "Trunk"
+  names(side_mass) <- var_levs
+  names(mass_type) <- var_levs
+
+  y_df <- rbind(
+    data.frame(mdist$By, "shared" = "Unshared"),
+    data.frame(mdist$Wy, "shared" = "Shared")
+  )
+  y_df$side <- side_mass[as.character(y_df$variable)]
+  y_df$mass <- mass_type[as.character(y_df$variable)]
+
+
+  lev_order <- y_df %>%
+    arrange(mass, side) %>%
+    select(variable) %>%
+    unique() %>%
+    unlist() %>%
+    as.character()
+  y_df$variable <- factor(y_df$variable, lev_order)
+
+  ggplot(y_df) +
     geom_hline(yintercept = 0, alpha = 0.4) +
     geom_boxplot(
       aes(
         x = variable,
-        y = value
+        y = value,
+        col = side
       ),
       outlier.size = 1
     ) +
-    facet_grid(col ~ .) +
-    theme(axis.text.x = element_text(angle = -90))
+    facet_grid(shared + col ~ mass, scales = "free", space = "free_x") +
+    scale_color_brewer(palette = "Set2") +
+    theme(
+      axis.text.x = element_text(angle = -90, hjust = 0),
+      strip.text.y = element_text(angle = 0),
+      legend.position =  "bottom"
+    )
 
   ggsave(
-    sprintf("%s/between_loadings_body_comp_boxplots.pdf", opts$outdir),
-    width = 6.44,
-    height = 3.95
+    sprintf("%s/loadings_boxplots.pdf", opts$outdir),
+    width = 6.95,
+    height = 6.33
   )
 }
