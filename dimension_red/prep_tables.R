@@ -112,7 +112,7 @@ create_sim <- function(raw) {
   # simulate the body compositions
   sim$bc <- raw$bc
   sim$bc[, "id"] <- as.character(seq_len(nrow(sim$bc)))
-  sim$bc[, "number"] <- as.character(seq_len(nrow(sim$bc)))
+  sim$bc[, "number"] <- paste0("sa", as.character(seq_len(nrow(sim$bc))))
   sim$bc[, "gender"] <- sample(c("Male", "Female"), nrow(sim$bc), replace =  TRUE)
   sim$bc[, "age"] <- rpois(nrow(sim$bc), 50)
   sim$bc[, "batch"] <- 1
@@ -330,7 +330,7 @@ process_data <- function(seqtab, bc, bc_full, taxa, tree, opts = list()) {
 melt_ps <- function(ps) {
   get_taxa(ps) %>%
     melt(varnames = c("number", "seq_num")) %>%
-    left_join(sample_data(ps)) %>%
+    left_join(get_variable(ps)) %>%
     left_join(data.frame(tax_table(ps)))
 }
 
